@@ -10,6 +10,13 @@ load_dotenv()
 # Create FastAPI app
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],        # Allow all domains
+    allow_credentials=True,
+    allow_methods=["*"],        # Allow GET, POST, OPTIONS, etc.
+    allow_headers=["*"],
+)
 # Create OpenAI client (pointing to AI Pipe)
 client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY"),
